@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/mrudge/Desktop/untitled/includes/push_swap.h
+stdlib.h
+-
+stdio.h
+-
+../libft/libft.h
+/Users/mrudge/Desktop/untitled/libft/libft.h
+
+/Users/mrudge/Desktop/untitled/libft/libft.h
+stdlib.h
+-
+unistd.h
+-
+
+/Users/mrudge/Desktop/untitled/sources/push_swap.c
+../includes/push_swap.h
+/Users/mrudge/Desktop/untitled/includes/push_swap.h
+

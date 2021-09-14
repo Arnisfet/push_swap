@@ -1,4 +1,4 @@
-SRC		=	sources/push_swap.c
+SRC		=	sources/push_swap.c	sources/ft_strchr_ps.c	sources/create_frame.c
 
 OBJ		=	$(SRC:.c=.o)
 

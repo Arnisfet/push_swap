@@ -66,6 +66,7 @@ int	error_parse(t_frame *frame, char **av, int ac)
 		printf("%ld", words);
 				i++;
 	}
+
 }
 // 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
 

@@ -8,12 +8,8 @@
 
 char	*ft_strnstr(const char *dst, const char *src, size_t n)
 {
-	size_t	i;
-	size_t	j;
 	size_t	len_2;
 
-	i = 0;
-	j = 0;
 	len_2 = ft_strlen(src);
 	if (src[0] == '\0')
 		return ((char *) dst);

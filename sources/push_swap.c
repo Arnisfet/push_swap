@@ -24,22 +24,24 @@ void	push_swap_error(t_frame *frame)
 	free(frame);
 	exit(0);
 }
+
 int	error_parse(t_frame *frame, char **av, int ac)
 {
-	int			i;
-	int			j;
 	char		str[255];
 	long int	num;
+	int i;
 
+	i = 0;
 	ft_bzero(str, 255);
-	i = 1;
-	j = 0;
-	while (av[i])
+	while (av[i+1])
 	{
-		num = ft_atoi(av[i]);
+		num = ft_atoi(av[i+1]);
 		if (!ft_strchr_ps(av))
+		{
+			printf("00000");
 			push_swap_error(frame);
-		else if (str[num])
+		}
+		else if (str[num] && num != 0)
 			push_swap_error(frame);
 		if (num > 2147483647 || num < -2147483648)
 			push_swap_error(frame);
@@ -47,9 +49,9 @@ int	error_parse(t_frame *frame, char **av, int ac)
 			str[num] = 1;
 		else if(!ft_isdigit((int)num))
 			push_swap_error(frame);
-		stack_add_end(frame, 'a', num);
+		add_to_stack(frame, 'a', num);
 //		frame->argc = //запись в стек а.
-		printf("%ld", num);
+//		printf("%ld", num);
 		i++;
 	}
 }
@@ -57,13 +59,29 @@ int	error_parse(t_frame *frame, char **av, int ac)
 void	push_swap(t_frame *frame, int ac, char **av)
 {
 	create_frame(frame);
+	frame->stack_a = (t_srtuct *)malloc(sizeof (t_srtuct));
+	frame->stack_b = (t_srtuct *)malloc(sizeof (t_srtuct));
 	error_parse(frame, av, ac);
 }
 
-void	stack_add_end(t_frame *frame, char stack_name, long int num)
+void	add_to_stack(t_frame *frame, char stack_name, long int num)
 {
+	t_srtuct	*tmpA;
+	t_srtuct	*tmpB;
 
+	tmpA = frame->stack_a;
+	tmpB = frame->stack_b;
 
+	while (tmpA->next != NULL)
+	{
+		printf("Stack A: %li\n", tmpA->num);
+		tmpA = tmpA->next;
+		tmpB = tmpB->next;
+	}
+	tmpA->next = (t_srtuct *)malloc(sizeof(t_srtuct));
+	tmpB->next = (t_srtuct *)malloc(sizeof(t_srtuct));
+	tmpA->num = num;
+	printf("Stack A: %li\n", tmpA->num);
 }
 
 int	main(int ac, char **av)
@@ -71,8 +89,6 @@ int	main(int ac, char **av)
 	t_frame *frame;
 
 	frame = (t_frame *)malloc(sizeof(t_frame));
-	frame->link.num = 0;
-	frame->link->next = frame;
 	if (ac < 2)
 		return (1);
 	push_swap(frame, ac, av);

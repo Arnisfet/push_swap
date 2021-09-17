@@ -1,4 +1,5 @@
-SRC		=	sources/push_swap.c	sources/ft_strchr_ps.c	sources/create_frame.c	sources/sorted.c
+SRC		=	sources/push_swap.c	sources/ft_strchr_ps.c	sources/create_frame.c	sources/sorted.c	\
+			sources/solver.c	sources/solve_5_or_less.c
 
 OBJ		=	$(SRC:.c=.o)
 

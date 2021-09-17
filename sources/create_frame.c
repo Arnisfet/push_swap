@@ -2,6 +2,7 @@
 
 void	create_frame(t_frame *frame)
 {
-	frame->a = NULL;
-	frame->b = NULL;
+	frame->stack_a->next = NULL;
+	frame->stack_b->next = NULL;
+	frame->stack_len = 0;
 }

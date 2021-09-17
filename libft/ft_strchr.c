@@ -9,9 +9,7 @@
 char	*ft_strchr(const char *str, int ch)
 {
 	char	*p;
-	char	i;
 
-	i = (char)ch;
 	p = (char *)str;
 	while (*p && *p != ch)
 		p++;

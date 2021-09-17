@@ -58,10 +58,11 @@ void	push_swap(t_frame *frame, int ac, char **av)
 {
 	frame->stack_a = (t_srtuct *)malloc(sizeof (t_srtuct));
 	frame->stack_b = (t_srtuct *)malloc(sizeof (t_srtuct));
+	create_frame(frame);
 	error_parse(frame, av, ac);
-	if (!sorted(frame))
-		return ; // Не забудь почистить элементы списка.
-	solver(frame);
+//	if (!sorted(frame))
+//		return ; // Не забудь почистить элементы списка.
+//	solver(frame);
 }
 
 void	add_to_stack(t_frame *frame, char stack_name, long int num)
@@ -95,7 +96,6 @@ int	main(int ac, char **av)
 	frame = (t_frame *)malloc(sizeof(t_frame));
 	if (ac < 2)
 		return (1);
-	create_frame(frame);
 	push_swap(frame, ac, av);
 }
 

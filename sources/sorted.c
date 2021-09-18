@@ -2,7 +2,7 @@
 
 int	sorted(t_frame *frame)
 {
-	t_srtuct *tmpA;
+	t_struct *tmpA;
 
 	tmpA = frame->stack_a;
 

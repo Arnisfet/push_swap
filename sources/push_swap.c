@@ -1,5 +1,6 @@
 #include "../includes/push_swap.h"
 
+
 /* Этапы написания алгоритма:
  * 1) парсинг элементов из командной строки в стек и обработка ошибок
  * Процесс парсинга:
@@ -25,30 +26,48 @@ void	push_swap_error(t_frame *frame)
 	exit(0);
 }
 
+void	check_duplicates(t_frame *frame)
+{
+	t_struct *tmpA;
+	t_struct *checker;
+
+	tmpA = frame->stack_a;
+
+	while (tmpA->next !=NULL)
+	{
+		checker = tmpA->next;
+		while(checker->next != NULL)
+		{
+			printf("%li %li\n", tmpA->num, checker->num);
+			if (checker->num == tmpA->num)
+				push_swap_error(frame);
+			checker = checker->next;
+		}
+		tmpA = tmpA->next;
+	}
+}
+
 int	error_parse(t_frame *frame, char **av, int ac)
 {
-	char		str[255];
 	long int	num;
-	int i;
+	int			i;
 
 	i = 0;
-	ft_bzero(str, 255);
 	while (av[i+1])
 	{
 		num = ft_atoi(av[i+1]);
-		if (!ft_strchr_ps(av))
-			push_swap_error(frame);
-		else if (str[num] && num != 0)
-			push_swap_error(frame);
 		if (num > 2147483647 || num < -2147483648)
 			push_swap_error(frame);
-		else if (!str[num])
-			str[num] = 1;
-		else if(!ft_isdigit((int)num))
+		if(num < 0)
+		{
+			if (!ft_isdigit(av[i+1][1]))
+				push_swap_error(frame);
+		}
+		else if (!ft_isdigit(*av[i+1]))
+			push_swap_error(frame);
+		if (!ft_strchr_ps(av))
 			push_swap_error(frame);
 		add_to_stack(frame, 'a', num);
-//		frame->argc = //запись в стек а.
-//		printf("%ld", num);
 		i++;
 	}
 	return 0;
@@ -56,37 +75,41 @@ int	error_parse(t_frame *frame, char **av, int ac)
 
 void	push_swap(t_frame *frame, int ac, char **av)
 {
-	frame->stack_a = (t_srtuct *)malloc(sizeof (t_srtuct));
-	frame->stack_b = (t_srtuct *)malloc(sizeof (t_srtuct));
+	frame->stack_a = (t_struct *)malloc(sizeof (t_struct));
+	frame->stack_b = (t_struct *)malloc(sizeof (t_struct));
 	create_frame(frame);
 	error_parse(frame, av, ac);
-//	if (!sorted(frame))
-//		return ; // Не забудь почистить элементы списка.
-//	solver(frame);
+	check_duplicates(frame);
+	if (!sorted(frame))
+		return ; // Не забудь почистить элементы списка.
+	solver(frame);
 }
 
 void	add_to_stack(t_frame *frame, char stack_name, long int num)
 {
-	t_srtuct *tmpA;
-	t_srtuct *tmpB;
+	t_struct *tmpA;
+	t_struct *tmpB;
 
 	tmpA = frame->stack_a;
 	tmpB = frame->stack_b;
 
 	while (tmpA->next != NULL)
 	{
+//		printf("Stack A: %li\n", tmpA->num);
 		tmpA = tmpA->next;
 		tmpB = tmpB->next;
-		printf("Stack A: %li\n", tmpA->num);
+//		printf("Stack A: %li\n", tmpA->num);
 	}
-	tmpA->next = (t_srtuct *) malloc(sizeof(t_srtuct));
-	tmpB->next = (t_srtuct *) malloc(sizeof(t_srtuct));
+	if (tmpA->next == NULL)
+		tmpA->num = num;
+	tmpA->next = (t_struct *) malloc(sizeof(t_struct));
+	tmpB->next = (t_struct *) malloc(sizeof(t_struct));
 	tmpA = tmpA->next;
 	tmpB = tmpB->next;
-	tmpA->num = num;
 	tmpA->next = NULL;
+	tmpB->next = NULL;
+	tmpA->num = num;
 	++frame->stack_len;
-//	printf("Stack A: %li\n", tmpA->num);
 }
 
 int	main(int ac, char **av)
@@ -99,4 +122,4 @@ int	main(int ac, char **av)
 	push_swap(frame, ac, av);
 }
 
-// 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 токен
+// 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 токен

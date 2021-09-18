@@ -1,5 +1,5 @@
 SRC		=	sources/push_swap.c	sources/ft_strchr_ps.c	sources/create_frame.c	sources/sorted.c	\
-			sources/solver.c	sources/solve_5_or_less.c
+			sources/solver.c	sources/solve_5_or_less.c	sources/move_and_fill/do_sa.c
 
 OBJ		=	$(SRC:.c=.o)
 
@@ -17,16 +17,21 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C libft
-	gcc $(OBJ) $(LIB) $(WWW) -o $(NAME)
-
+	@gcc $(OBJ) $(LIB) $(WWW) -o $(NAME)
+	
 %.o:	./sources%.c
-	gcc -c $(INC) $(INC_LIB) $(WWW) $< -o $@
+	@gcc -c $(INC) $(INC_LIB) $(WWW) $< -o $@
+	@echo "\t\t\t\t\033[0;34Compile $@"
 	// Для работы данной конструкции файлы в срц должны быть конкретно обозначены
 
+%.o:	./sources/move_and_fill%.c
+	@gcc -c $(INC) $(INC_LIB) $(WWW) $< -o $@
+	@echo "\t\t\t\t\033[0;34Compile $@"
 clean:
-	make clean -C libft
-	rm -f $(OBJ)
+	@make clean -C libft
+	@rm -f $(OBJ)
 
 fclean: clean
-	make fclean -C libft
-	rm -f $(NAME)
+	@make fclean -C libft
+	@rm -f $(NAME)
+	@echo "\t\t\t\t\033[0;41mDelete $(NAME)"

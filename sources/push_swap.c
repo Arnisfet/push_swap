@@ -38,7 +38,6 @@ void	check_duplicates(t_frame *frame)
 		checker = tmpA->next;
 		while(checker->next != NULL)
 		{
-			printf("%li %li\n", tmpA->num, checker->num);
 			if (checker->num == tmpA->num)
 				push_swap_error(frame);
 			checker = checker->next;
@@ -77,6 +76,7 @@ void	push_swap(t_frame *frame, int ac, char **av)
 {
 	frame->stack_a = (t_struct *)malloc(sizeof (t_struct));
 	frame->stack_b = (t_struct *)malloc(sizeof (t_struct));
+	frame->stack_a->previous = (t_struct *)malloc(sizeof (t_struct));
 	create_frame(frame);
 	error_parse(frame, av, ac);
 	check_duplicates(frame);
@@ -87,18 +87,17 @@ void	push_swap(t_frame *frame, int ac, char **av)
 
 void	add_to_stack(t_frame *frame, char stack_name, long int num)
 {
-	t_struct *tmpA;
-	t_struct *tmpB;
+	t_struct	*tmpA;
+	t_struct	*tmpB;
 
 	tmpA = frame->stack_a;
 	tmpB = frame->stack_b;
 
 	while (tmpA->next != NULL)
 	{
-//		printf("Stack A: %li\n", tmpA->num);
 		tmpA = tmpA->next;
 		tmpB = tmpB->next;
-//		printf("Stack A: %li\n", tmpA->num);
+		frame->stack_a->previous = tmpA;
 	}
 	if (tmpA->next == NULL)
 		tmpA->num = num;

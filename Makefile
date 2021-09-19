@@ -1,5 +1,7 @@
 SRC		=	sources/push_swap.c	sources/ft_strchr_ps.c	sources/create_frame.c	sources/sorted.c	\
-			sources/solver.c	sources/solve_5_or_less.c	sources/move_and_fill/do_sa.c
+			sources/solver.c	sources/solve_5_or_less.c	sources/move_and_fill/do_sa.c	sources/find_biggest_or_smallest.c	\
+			sources/moves.c	sources/move_and_fill/do_rra.c
+
 
 OBJ		=	$(SRC:.c=.o)
 

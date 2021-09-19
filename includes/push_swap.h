@@ -6,12 +6,11 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 
-
-
 typedef struct	s_struct
 {
 	long int		num;
 	struct s_struct	*next;
+	struct s_struct	*previous;
 }				t_struct;
 
 typedef struct	s_frame
@@ -20,6 +19,10 @@ typedef struct	s_frame
 	t_struct	*stack_b;
 	int			stack_len;
 	int			*sign;
+	long int			biggest;
+	long int			smallest;
+	long int			small_move;
+	long int			big_move;
 }				t_frame;
 
 void	push_swap(t_frame *frame, int ac, char **av);
@@ -31,8 +34,13 @@ void	add_to_stack(t_frame *frame, char stack_name, long int num);
 int		sorted(t_frame *frame);
 void	solver(t_frame *frame);
 void	solver_5_or_less(t_frame *frame);
+void	find_biggest(t_frame *frame, char stack_name);
+void	find_smallest(t_frame *frame, char stack_name);
+void	find_biggest_smallest(t_frame *frame, char stack_name);
+void	moves_to_end(t_frame *frame, char stack_name, int flag);
 
 void	do_sa(t_frame *frame);
+void	do_rra(t_frame *frame);
 
 
 

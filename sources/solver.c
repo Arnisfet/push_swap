@@ -21,12 +21,30 @@ void	solve_3(t_frame *frame)
 			do_sa(frame);
 }
 
+void	solve_4(t_frame *frame)
+{
+	t_struct *tmp;
+
+	tmp = frame->stack_a;
+	find_biggest_smallest(frame, 'a');
+	while (tmp->num != frame->smallest)
+	{
+		do_ra(frame);
+		tmp = tmp->next;
+	}
+	do_pb(frame);
+	solve_3(frame);
+	do_pa(frame);
+}
+
 void	solver_5_or_less(t_frame *frame)
 {
 	if (frame->stack_len == 2)
 		solve_2(frame);
 	if (frame->stack_len == 3)
 		solve_3(frame);
+	if (frame->stack_len == 4)
+		solve_4(frame);
 }
 
 void	solver(t_frame *frame)

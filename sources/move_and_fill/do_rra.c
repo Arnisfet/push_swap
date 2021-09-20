@@ -1,16 +1,23 @@
 #include "../../includes/push_swap.h"
+/* Алгоритм:
+ * 1) поменять местами первые два числа в стеке
+ * 2) поменять местами первое и последнее число в стеке */
 
 void	do_rra(t_frame *frame)
 {
-	long int	first;
-	long int	second;
+	t_struct *tmp;
+	t_struct *another;
 
-	first = frame->stack_a->num;
-	frame->stack_a->num = frame->stack_a->next->num;
-	frame->stack_a->next->num = first;
-	second = frame->stack_a->num;
-	frame->stack_a->num = frame->stack_a->previous->num;
-	frame->stack_a->previous->num = second;
+	tmp = frame->tail;
+	tmp->next = frame->stack_a;
+//	tmp->previous = NULL;
+	frame->stack_a->previous= tmp;
+	another = tmp;
+	tmp = tmp->previous;
+	frame->tail =tmp;
+	tmp->next = NULL;
+	frame->stack_a = another;
+
 	write(1, "rra\n", 4);
 }
 

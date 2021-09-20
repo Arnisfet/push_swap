@@ -74,9 +74,7 @@ int	error_parse(t_frame *frame, char **av, int ac)
 
 void	push_swap(t_frame *frame, int ac, char **av)
 {
-	frame->stack_a = (t_struct *)malloc(sizeof (t_struct));
-	frame->stack_b = (t_struct *)malloc(sizeof (t_struct));
-	frame->stack_a->previous = (t_struct *)malloc(sizeof (t_struct));
+	frame = (t_frame *)malloc(sizeof(t_frame));
 	create_frame(frame);
 	error_parse(frame, av, ac);
 	check_duplicates(frame);
@@ -88,37 +86,43 @@ void	push_swap(t_frame *frame, int ac, char **av)
 void	add_to_stack(t_frame *frame, char stack_name, long int num)
 {
 	t_struct	*tmpA;
-	t_struct	*tmpB;
+	t_struct	*last_elem;
 
-	tmpA = frame->stack_a;
-	tmpB = frame->stack_b;
-
-	while (tmpA->next != NULL)
+	frame->stack_len++;
+	if (frame->stack_a == NULL)
 	{
-		tmpA = tmpA->next;
-		tmpB = tmpB->next;
-		frame->stack_a->previous = tmpA;
-	}
-	if (tmpA->next == NULL)
+		frame->stack_a = (t_struct *)malloc(sizeof (t_struct));
+		tmpA = frame->stack_a;
 		tmpA->num = num;
-	tmpA->next = (t_struct *) malloc(sizeof(t_struct));
-	tmpB->next = (t_struct *) malloc(sizeof(t_struct));
-	tmpA = tmpA->next;
-	tmpB = tmpB->next;
-	tmpA->next = NULL;
-	tmpB->next = NULL;
-	tmpA->num = num;
-	++frame->stack_len;
+		tmpA->next = NULL;
+		tmpA->previous = NULL;
+	}
+	else
+	{
+		tmpA = frame->stack_a;
+		while (tmpA->next != NULL)
+		{
+			last_elem = tmpA;
+			tmpA = tmpA->next;
+			tmpA->previous = last_elem;
+		}
+		tmpA->next = (t_struct *) malloc(sizeof(t_struct));
+		last_elem = tmpA;
+		tmpA = tmpA->next;
+		tmpA->previous = last_elem;
+		tmpA->num = num;
+		tmpA->next = NULL;
+		frame->tail = tmpA;
+	}
 }
 
 int	main(int ac, char **av)
 {
 	t_frame *frame;
 
-	frame = (t_frame *)malloc(sizeof(t_frame));
 	if (ac < 2)
 		return (1);
 	push_swap(frame, ac, av);
 }
 
-// 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 токен
+// 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 токен

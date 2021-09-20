@@ -17,6 +17,7 @@ typedef struct	s_frame
 {
 	t_struct	*stack_a;
 	t_struct	*stack_b;
+	t_struct	*tail;
 	int			stack_len;
 	int			*sign;
 	long int			biggest;
@@ -38,10 +39,16 @@ void	find_biggest(t_frame *frame, char stack_name);
 void	find_smallest(t_frame *frame, char stack_name);
 void	find_biggest_smallest(t_frame *frame, char stack_name);
 void	moves_to_end(t_frame *frame, char stack_name, int flag);
+void	solve_4(t_frame *frame);
 
 void	do_sa(t_frame *frame);
 void	do_rra(t_frame *frame);
+void	do_ra(t_frame *frame);
+void	do_pb(t_frame *frame);
+void	do_pa(t_frame *frame);
 
+void	stack_del_top(t_frame *frame, char stack_name);
+void	stack_add_top(t_frame *frame, char stack_name, long int num);
 
 
 #endif //UNTITLED_PUSH_SWAP_H

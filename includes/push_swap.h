@@ -25,6 +25,9 @@ typedef struct	s_frame
 	long int			smallest;
 	long int			small_move;
 	long int			big_move;
+	long				quarter;
+	long				median;
+	long			three_quarter;
 }				t_frame;
 
 void	push_swap(t_frame *frame, int ac, char **av);
@@ -41,12 +44,15 @@ void	find_smallest(t_frame *frame, char stack_name);
 void	find_biggest_smallest(t_frame *frame, char stack_name);
 void	moves_to_end(t_frame *frame, char stack_name, int flag);
 void	solve_4(t_frame *frame);
+void	median(t_frame *frame, char stack_name);
+void	solve_5(t_frame *frame);
 
 void	do_sa(t_frame *frame);
 void	do_rra(t_frame *frame);
 void	do_ra(t_frame *frame);
 void	do_pb(t_frame *frame);
 void	do_pa(t_frame *frame);
+void	do_sb(t_frame *frame);
 
 void	stack_del_top(t_frame *frame, char stack_name);
 void	stack_add_top(t_frame *frame, char stack_name, long int num);

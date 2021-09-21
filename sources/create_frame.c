@@ -9,4 +9,7 @@ void	create_frame(t_frame *frame)
 	frame->small_move = 0;
 	frame->biggest = 0;
 	frame->smallest = 0;
+	frame->median = 0;
+	frame->three_quarter = 0;
+	frame->quarter = 0;
 }

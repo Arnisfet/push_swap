@@ -40,13 +40,41 @@ void	solve_4(t_frame *frame)
 
 void	solver_5_or_less(t_frame *frame)
 {
-	printf("%i len\n", frame->stack_len);
 	if (frame->stack_len == 2)
 		solve_2(frame);
 	if (frame->stack_len == 3)
 		solve_3(frame);
 	if (frame->stack_len == 4)
 		solve_4(frame);
+	if (frame->stack_len == 5)
+		solve_5(frame);
+}
+
+void	solve_5(t_frame *frame)
+{
+	t_struct	*stack_end;
+	t_struct	*temp;
+	int			flag;
+
+	flag = 0;
+	stack_end = frame->tail;
+	median(frame, 'a');
+	while (flag != 1)
+	{
+		if (frame->stack_a == stack_end)
+			flag = 1;
+		if (frame->stack_a->num < frame->median)
+			do_pb(frame);
+		else
+			do_ra(frame);
+	}
+	solve_3(frame);
+	temp = frame->stack_b->next;
+	if (frame->stack_b->num < temp->num)
+		do_sb(frame);
+	do_pa(frame);
+	do_pa(frame);
+//	print(frame, 'a');
 }
 
 void	solver(t_frame *frame)

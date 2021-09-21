@@ -28,21 +28,28 @@ void	push_swap_error(t_frame *frame)
 
 void	check_duplicates(t_frame *frame)
 {
-	t_struct *tmpA;
-	t_struct *checker;
+	t_struct	*tmpA;
+	t_struct	*checker;
 
 	tmpA = frame->stack_a;
-
-	while (tmpA->next !=NULL)
+	if (frame->stack_len > 2)
 	{
-		checker = tmpA->next;
-		while(checker->next != NULL)
+		while (tmpA->next !=NULL)
 		{
-			if (checker->num == tmpA->num)
-				push_swap_error(frame);
-			checker = checker->next;
+			checker = tmpA->next;
+			while(checker->next != NULL)
+			{
+				if (checker->num == tmpA->num)
+					push_swap_error(frame);
+				checker = checker->next;
+			}
+			tmpA = tmpA->next;
 		}
-		tmpA = tmpA->next;
+	}
+	else
+	{
+		if (tmpA->num == tmpA->next->num)
+			push_swap_error(frame);
 	}
 }
 
@@ -118,7 +125,7 @@ void	add_to_stack(t_frame *frame, char stack_name, long int num)
 
 int	main(int ac, char **av)
 {
-	t_frame *frame;
+	t_frame	*frame;
 
 	if (ac < 2)
 		return (1);

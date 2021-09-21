@@ -6,6 +6,6 @@ void	do_pa(t_frame *frame)
 
 	tmp = frame->stack_b->num;
 	stack_del_top(frame, 'b');
-	stack_add_top(frame, 'b', tmp);
+	stack_add_top(frame, 'a', tmp);
 	write(1, "pa\n", 3);
 }

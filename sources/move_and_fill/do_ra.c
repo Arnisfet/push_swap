@@ -6,13 +6,19 @@
 
 void	do_ra(t_frame *frame)
 {
-	long int tmp;
+	t_struct	*tmp;
+	t_struct	*another;
 
-	tmp = frame->tail->num;
-	frame->tail->num = frame->tail->previous->num;
-	frame->tail->previous->num = tmp;
-	tmp = frame->stack_a->num;
-	frame->stack_a->num = frame->tail->num;
-	frame->tail->num = tmp;
+	tmp = frame->stack_a;
+	frame->tail->next = tmp;
+	tmp->previous = frame->tail;
+	another = tmp->next;
+//	printf("%li, another\n", another->num);
+	tmp->next = NULL;
+	another->previous = NULL;
+	frame->stack_a = another;
+	frame->tail = tmp;
+//	frame->stack_a = frame->stack_a->next;
+
 	write(1, "ra\n", 3);
 }

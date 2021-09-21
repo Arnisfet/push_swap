@@ -15,10 +15,10 @@ void	solve_3(t_frame *frame)
 	if (frame->big_move >= 1)
 		while (frame->big_move-- > 1)
 			do_rra(frame);
-		stack_a = frame->stack_a;
-		temp = frame->stack_a->next;
-		if (stack_a->num > temp->num)
-			do_sa(frame);
+	stack_a = frame->stack_a;
+	temp = frame->stack_a->next;
+	if (stack_a->num > temp->num)
+		do_sa(frame);
 }
 
 void	solve_4(t_frame *frame)
@@ -30,15 +30,17 @@ void	solve_4(t_frame *frame)
 	while (tmp->num != frame->smallest)
 	{
 		do_ra(frame);
-		tmp = tmp->next;
+		tmp = frame->stack_a;
 	}
 	do_pb(frame);
 	solve_3(frame);
 	do_pa(frame);
+//	print(frame, 'a');
 }
 
 void	solver_5_or_less(t_frame *frame)
 {
+	printf("%i len\n", frame->stack_len);
 	if (frame->stack_len == 2)
 		solve_2(frame);
 	if (frame->stack_len == 3)

@@ -6,9 +6,9 @@ void	moves_to_end(t_frame *frame, char stack_name, int flag)
 	int			element;
 
 	if (stack_name == 'a')
-		temp = frame->stack_a;
+		temp = frame->tail;
 	else
-		temp = frame->stack_b;
+		temp = frame->tail_b;
 	if (flag == 1)
 		element = frame->smallest;
 	else
@@ -19,10 +19,10 @@ void	moves_to_end(t_frame *frame, char stack_name, int flag)
 			frame->small_move++;
 		else
 			frame->big_move++;
-		temp = temp->next;
+		temp = temp->previous;
 	}
 	if (flag == 1)
-		frame->small_move = frame->stack_len - frame->small_move++;
+		frame->small_move++;
 	else
-		frame->big_move = frame->stack_len - frame->big_move++;
+		frame->big_move++;
 }

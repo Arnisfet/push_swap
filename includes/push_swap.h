@@ -18,6 +18,7 @@ typedef struct	s_frame
 	t_struct	*stack_a;
 	t_struct	*stack_b;
 	t_struct	*tail;
+	t_struct	*tail_b;
 	int			stack_len;
 	int			*sign;
 	long int			biggest;

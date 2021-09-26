@@ -22,6 +22,7 @@ void	stack_add_top(t_frame *frame, char stack_name, long int num)
 {
 	t_struct *tmp;
 	t_struct *new_node;
+	t_struct *tail;
 
 	if (stack_name == 'a')
 		tmp = frame->stack_a;
@@ -29,11 +30,12 @@ void	stack_add_top(t_frame *frame, char stack_name, long int num)
 		tmp = frame->stack_b;
 	if (tmp == NULL)
 	{
-		tmp = (t_struct *)malloc(sizeof (t_struct));
-		tmp->num = num;
-		tmp->next = NULL;
-		tmp->previous = NULL;
-		frame->stack_b = tmp;
+		new_node = (t_struct *)malloc(sizeof (t_struct));
+		new_node->num = num;
+		new_node->next = NULL;
+		new_node->previous = NULL;
+		frame->tail_b = new_node;
+		frame->stack_b = new_node;
 	}
 	else
 	{

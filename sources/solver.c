@@ -12,8 +12,8 @@ void	solve_3(t_frame *frame)
 	t_struct *temp;
 	find_biggest(frame, 'a');
 	moves_to_end(frame, 'a', 2);
-	if (frame->big_move >= 1)
-		while (frame->big_move-- > 1)
+	if (frame->big_move_end >= 1)
+		while (frame->big_move_end-- > 1)
 			do_rra(frame);
 	stack_a = frame->stack_a;
 	temp = frame->stack_a->next;
@@ -81,4 +81,6 @@ void	solver(t_frame *frame)
 {
 	if (frame->stack_len <= 5)
 		solver_5_or_less(frame);
+	else if (frame->stack_len <= 100)
+		solve_big_num(frame);
 }

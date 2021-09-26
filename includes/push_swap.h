@@ -23,11 +23,17 @@ typedef struct	s_frame
 	int			*sign;
 	long int			biggest;
 	long int			smallest;
-	long int			small_move;
-	long int			big_move;
+	long int			small_move_end;
+	long int			small_move_start;
+	long int			big_move_end;
+	long int			big_move_start;
 	long				quarter;
 	long				median;
 	long			three_quarter;
+	int			big_flag;
+	int			small_flag;
+	int			after_rotate;
+
 }				t_frame;
 
 void	push_swap(t_frame *frame, int ac, char **av);
@@ -46,6 +52,11 @@ void	moves_to_end(t_frame *frame, char stack_name, int flag);
 void	solve_4(t_frame *frame);
 void	median(t_frame *frame, char stack_name);
 void	solve_5(t_frame *frame);
+void	solve_big_num(t_frame *frame);
+void	reset_moves(t_frame *frame);
+void	push_median(t_frame *frame, int split);
+void	find_moves(t_frame *frame, char stack_name);
+void	push_big_small(t_frame *frame, t_struct *stack, t_struct *stack_end);
 
 void	do_sa(t_frame *frame);
 void	do_rra(t_frame *frame);
@@ -53,6 +64,8 @@ void	do_ra(t_frame *frame);
 void	do_pb(t_frame *frame);
 void	do_pa(t_frame *frame);
 void	do_sb(t_frame *frame);
+void	do_rb(t_frame *frame);
+void	do_rrb(t_frame *frame);
 
 void	stack_del_top(t_frame *frame, char stack_name);
 void	stack_add_top(t_frame *frame, char stack_name, long int num);

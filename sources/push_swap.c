@@ -28,8 +28,8 @@ void	push_swap_error(t_frame *frame)
 
 void	check_duplicates(t_frame *frame)
 {
-	t_struct	*tmpA;
-	t_struct	*checker;
+	t_struct *tmpA;
+	t_struct *checker;
 
 	tmpA = frame->stack_a;
 	if (frame->stack_len > 2)
@@ -43,6 +43,8 @@ void	check_duplicates(t_frame *frame)
 					push_swap_error(frame);
 				checker = checker->next;
 			}
+			if (checker->num == tmpA->num)
+				push_swap_error(frame);
 			tmpA = tmpA->next;
 		}
 	}
@@ -64,7 +66,7 @@ int	error_parse(t_frame *frame, char **av, int ac)
 		num = ft_atoi(av[i+1]);
 		if (num > 2147483647 || num < -2147483648)
 			push_swap_error(frame);
-		if(num < 0)
+		if (num < 0 || av[i+1][0] == '+')
 		{
 			if (!ft_isdigit(av[i+1][1]))
 				push_swap_error(frame);
@@ -76,7 +78,7 @@ int	error_parse(t_frame *frame, char **av, int ac)
 		add_to_stack(frame, 'a', num);
 		i++;
 	}
-	return 0;
+	return (0);
 }
 
 void	push_swap(t_frame *frame, int ac, char **av)

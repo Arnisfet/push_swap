@@ -38,6 +38,8 @@ void	find_smallest(t_frame *frame, char stack_name)
 			frame->smallest = temp->num;
 		temp = temp->next;
 	}
+	if (temp->num < frame->smallest)
+		frame->smallest = temp->num;
 }
 
 void	find_biggest_smallest(t_frame *frame, char stack_name)

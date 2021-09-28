@@ -71,4 +71,9 @@ void	stack_del_top(t_frame *frame, char stack_name);
 void	stack_add_top(t_frame *frame, char stack_name, long int num);
 
 
+
+
+
+
+void print(t_frame *frame, char stack_name);
 #endif //UNTITLED_PUSH_SWAP_H

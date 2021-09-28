@@ -13,9 +13,9 @@ void	push_median(t_frame *frame, int split)
 //	print(frame, 'a');
 	while(1)
 	{
-		printf("stack num %li, median %li\n", begin->num, frame->median);
-		printf("golova %li\n", frame->stack_a->num);
-		printf("hvost %li\n", end->num);
+//		printf("stack num %li, median %li\n", begin->num, frame->median);
+//		printf("golova %li\n", frame->stack_a->num);
+//		printf("hvost %li\n", end->num);
 		if (begin == end)
 			flag = 1;
 		if (split == 1 && begin->num <= frame->median)

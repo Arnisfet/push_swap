@@ -57,6 +57,7 @@ void	reset_moves(t_frame *frame);
 void	push_median(t_frame *frame, int split);
 void	find_moves(t_frame *frame, char stack_name);
 void	push_big_small(t_frame *frame, t_struct *stack, t_struct *stack_end);
+void	push_quartes(t_frame *frame, int split);
 
 void	do_sa(t_frame *frame);
 void	do_rra(t_frame *frame);

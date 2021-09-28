@@ -3,7 +3,7 @@ SRC		=	sources/push_swap.c	sources/ft_strchr_ps.c	sources/create_frame.c	sources
 			sources/moves.c	sources/move_and_fill/do_rra.c	sources/move_and_fill/do_pb.c	sources/move_and_fill/stack_top.c	\
 			sources/move_and_fill/do_ra.c	sources/move_and_fill/do_pa.c sources/move_and_fill/do_sb.c	sources/median.c	\
 			sources/solve_big_num.c	sources/push_median.c	sources/move_and_fill/do_rb.c	sources/move_and_fill/do_rrb.c	\
-			sources/print.c
+			sources/print.c	sources/push_quartes.c	sources/solve_over_100.c
 
 OBJ		=	$(SRC:.c=.o)
 

@@ -2,7 +2,7 @@
 
 void	do_pa(t_frame *frame)
 {
-	long int tmp;
+	long int	tmp;
 
 	tmp = frame->stack_b->num;
 	stack_del_top(frame, 'b');

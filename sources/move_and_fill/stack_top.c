@@ -2,7 +2,7 @@
 
 void	stack_del_top(t_frame *frame, char stack_name)
 {
-	t_struct *tmp;
+	t_struct	*tmp;
 
 	if (stack_name == 'a')
 	{
@@ -18,11 +18,19 @@ void	stack_del_top(t_frame *frame, char stack_name)
 	}
 }
 
+void	first_elem(t_frame *frame, t_struct *new_node, long int num)
+{
+	new_node->num = num;
+	new_node->next = NULL;
+	new_node->previous = NULL;
+	frame->tail_b = new_node;
+	frame->stack_b = new_node;
+}
+
 void	stack_add_top(t_frame *frame, char stack_name, long int num)
 {
-	t_struct *tmp;
-	t_struct *new_node;
-	t_struct *tail;
+	t_struct	*tmp;
+	t_struct	*new_node;
 
 	if (stack_name == 'a')
 		tmp = frame->stack_a;
@@ -31,11 +39,7 @@ void	stack_add_top(t_frame *frame, char stack_name, long int num)
 	if (tmp == NULL)
 	{
 		new_node = (t_struct *)malloc(sizeof (t_struct));
-		new_node->num = num;
-		new_node->next = NULL;
-		new_node->previous = NULL;
-		frame->tail_b = new_node;
-		frame->stack_b = new_node;
+		first_elem(frame, new_node, num);
 	}
 	else
 	{

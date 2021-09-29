@@ -13,12 +13,9 @@ void	do_ra(t_frame *frame)
 	frame->tail->next = tmp;
 	tmp->previous = frame->tail;
 	another = tmp->next;
-//	printf("%li, another\n", another->num);
 	tmp->next = NULL;
 	another->previous = NULL;
 	frame->stack_a = another;
 	frame->tail = tmp;
-//	frame->stack_a = frame->stack_a->next;
-
 	write(1, "ra\n", 3);
 }

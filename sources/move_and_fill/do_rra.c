@@ -5,19 +5,16 @@
 
 void	do_rra(t_frame *frame)
 {
-	t_struct *tmp;
-	t_struct *another;
+	t_struct	*tmp;
+	t_struct	*another;
 
 	tmp = frame->tail;
 	tmp->next = frame->stack_a;
-//	tmp->previous = NULL;
-	frame->stack_a->previous= tmp;
+	frame->stack_a->previous = tmp;
 	another = tmp;
 	tmp = tmp->previous;
-	frame->tail =tmp;
+	frame->tail = tmp;
 	tmp->next = NULL;
 	frame->stack_a = another;
-
 	write(1, "rra\n", 4);
 }
-

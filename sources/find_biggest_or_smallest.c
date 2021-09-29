@@ -2,8 +2,8 @@
 
 void	find_biggest(t_frame *frame, char stack_name)
 {
-	t_struct *stack;
-	t_struct *temp;
+	t_struct	*stack;
+	t_struct	*temp;
 
 	if (stack_name == 'a')
 		stack = frame->stack_a;
@@ -23,8 +23,8 @@ void	find_biggest(t_frame *frame, char stack_name)
 
 void	find_smallest(t_frame *frame, char stack_name)
 {
-	t_struct *stack;
-	t_struct *temp;
+	t_struct	*stack;
+	t_struct	*temp;
 
 	if (stack_name == 'a')
 		stack = frame->stack_a;

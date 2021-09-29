@@ -52,8 +52,7 @@ void	find_median(t_frame *frame, t_struct *stack, char stack_name)
 	i = 0;
 	frame->stack_len = find_stack_len(frame, stack_name);
 	quarter_len = frame->stack_len / 4;
-	array = (long *)malloc(sizeof(long)* (frame->stack_len + 1));
-
+	array = (long *)malloc(sizeof(long) * (frame->stack_len + 1));
 	while (i < frame->stack_len)
 	{
 		array[i++] = stack->num;
@@ -68,7 +67,8 @@ void	find_median(t_frame *frame, t_struct *stack, char stack_name)
 
 void	median(t_frame *frame, char stack_name)
 {
-	t_struct *stack;
+	t_struct	*stack;
+
 	if (stack_name == 'a')
 		stack = frame->stack_a;
 	else

@@ -1,9 +1,9 @@
 #include "../includes/push_swap.h"
 
-int		ft_strchr_ps(char **str)
+int	ft_strchr_ps(char **str)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (str[i])

@@ -2,11 +2,10 @@
 
 int	sorted(t_frame *frame)
 {
-	t_struct *tmpA;
+	t_struct	*tmpA;
 
 	tmpA = frame->stack_a;
-
-	while(tmpA->next != NULL)
+	while (tmpA->next != NULL)
 	{
 		if (tmpA->num > tmpA->next->num)
 			return (1);
@@ -14,4 +13,3 @@ int	sorted(t_frame *frame)
 	}
 	return (0);
 }
-

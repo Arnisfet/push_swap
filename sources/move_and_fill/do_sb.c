@@ -2,7 +2,7 @@
 
 void	do_sb(t_frame *frame)
 {
-	long int tmp;
+	long int	tmp;
 
 	tmp = frame->stack_b->num;
 	frame->stack_b->num = frame->stack_b->next->num;

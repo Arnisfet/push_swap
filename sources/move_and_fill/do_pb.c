@@ -2,7 +2,7 @@
 
 void	do_pb(t_frame *frame)
 {
-	long int temp;
+	long int	temp;
 
 	temp = frame->stack_a->num;
 	stack_del_top(frame, 'a');

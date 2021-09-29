@@ -1,19 +1,18 @@
-
-#ifndef UNTITLED_PUSH_SWAP_H
-# define UNTITLED_PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/libft.h"
 
-typedef struct	s_struct
+typedef struct s_struct
 {
 	long int		num;
 	struct s_struct	*next;
 	struct s_struct	*previous;
 }				t_struct;
 
-typedef struct	s_frame
+typedef struct s_frame
 {
 	t_struct	*stack_a;
 	t_struct	*stack_b;
@@ -21,15 +20,15 @@ typedef struct	s_frame
 	t_struct	*tail_b;
 	int			stack_len;
 	int			*sign;
-	long int			biggest;
-	long int			smallest;
-	long int			small_move_end;
-	long int			small_move_start;
-	long int			big_move_end;
-	long int			big_move_start;
-	long				quarter;
-	long				median;
-	long			three_quarter;
+	long int	biggest;
+	long int	smallest;
+	long int	small_move_end;
+	long int	small_move_start;
+	long int	big_move_end;
+	long int	big_move_start;
+	long		quarter;
+	long		median;
+	long		three_quarter;
 	int			big_flag;
 	int			small_flag;
 	int			after_rotate;
@@ -59,6 +58,8 @@ void	find_moves(t_frame *frame, char stack_name);
 void	push_big_small(t_frame *frame, t_struct *stack, t_struct *stack_end);
 void	push_quartes(t_frame *frame, int split);
 void	solve_over_100(t_frame *frame);
+void	moves_to_start(t_frame *frame, char stack_name, int flag);
+void	moves_to_end(t_frame *frame, char stack_name, int flag);
 
 void	do_sa(t_frame *frame);
 void	do_rra(t_frame *frame);
@@ -72,10 +73,10 @@ void	do_rrb(t_frame *frame);
 void	stack_del_top(t_frame *frame, char stack_name);
 void	stack_add_top(t_frame *frame, char stack_name, long int num);
 
+void	push_first_split(t_frame *frame);
+void	push_second_split(t_frame *frame);
+void	push_third_split(t_frame *frame);
+void	push_fourth_split(t_frame *frame);
 
-
-
-
-
-void print(t_frame *frame, char stack_name);
+void	print(t_frame *frame, char stack_name);
 #endif //UNTITLED_PUSH_SWAP_H

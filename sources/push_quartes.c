@@ -49,12 +49,11 @@ void	push_quartes(t_frame *frame, int split)
 	begin = frame->stack_a;
 	end = frame->tail;
 	flag = 0;
-	while (flag != 1)
+	find_smallest(frame, 'a');
+	while (1)
 	{
-		if (begin->num == end->num)
+		if (begin == end)
 			flag = 1;
-		else
-			flag = 0;
 		if (split == 1 && begin->num <= frame->quarter)
 			push_first_split(frame);
 		else if (split == 2 && begin->num > frame->quarter && begin->num <=
@@ -65,10 +64,12 @@ void	push_quartes(t_frame *frame, int split)
 			push_third_split(frame);
 		else if (split == 4 && begin->num > frame->three_quarter)
 			push_fourth_split(frame);
-		else if (split == 5 && begin->num == frame->smallest)
+		else if (split == 4 && begin->num == frame->smallest)
 			break ;
 		else
 			do_ra(frame);
+		if (flag == 1)
+			break ;
 		begin = frame->stack_a;
 	}
 	reset_moves(frame);

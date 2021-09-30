@@ -58,7 +58,6 @@ void	solve_big_num(t_frame *frame)
 		if (split == 3)
 			break ;
 	}
-	print(frame, 'a');
 }
 
 void	push_big_small(t_frame *frame, t_struct *stack, t_struct *stack_end)

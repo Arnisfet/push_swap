@@ -60,6 +60,7 @@ void	push_quartes(t_frame *frame, int split);
 void	solve_over_100(t_frame *frame);
 void	moves_to_start(t_frame *frame, char stack_name, int flag);
 void	moves_to_end(t_frame *frame, char stack_name, int flag);
+void	freed(t_frame *frame);
 
 void	do_sa(t_frame *frame);
 void	do_rra(t_frame *frame);

@@ -85,15 +85,20 @@ void	push_swap(t_frame *frame, int ac, char **av)
 	error_parse(frame, av, ac);
 	check_duplicates(frame);
 	if (!sorted(frame))
-		return ;// Не забудь почистить элементы списка.
+	{
+		freed(frame);
+		push_swap_error(frame);
+	}
 	solver(frame);
+	freed(frame);
+	free(frame);
 }
 
 int	main(int ac, char **av)
 {
 	t_frame	*frame;
 
-	if (ac < 2)
-		return (1);
-	push_swap(frame, ac, av);
+	if (ac > 2)
+		push_swap(frame, ac, av);
+	return (0);
 }

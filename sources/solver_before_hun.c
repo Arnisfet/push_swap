@@ -62,7 +62,6 @@ void	solve_5(t_frame *frame)
 		do_sb(frame);
 	do_pa(frame);
 	do_pa(frame);
-	print(frame, 'a');
 }
 
 void	solver_5_or_less(t_frame *frame)

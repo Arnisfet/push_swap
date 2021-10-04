@@ -19,7 +19,8 @@
 void	push_swap_error(t_frame *frame)
 {
 	write(2, "Error\n", 6);
-	free(frame);
+//	free(frame);
+//	freed(frame);
 	exit(0);
 }
 

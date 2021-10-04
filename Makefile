@@ -40,3 +40,5 @@ fclean: clean
 	@make fclean -C libft
 	@rm -f $(NAME)
 	@echo "\t\t\t\t\033[0;41mDelete $(NAME)"
+
+re: fclean all

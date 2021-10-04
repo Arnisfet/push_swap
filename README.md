@@ -44,7 +44,6 @@
 ```
  Program takes integers as a parameters
 
- To start program with Mandelbrot set use this parameters:
  ```
  ./push_swap 1 3 4 66 55 44 7 8 0 9 3
 ```
